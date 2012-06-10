@@ -168,3 +168,9 @@ echo "-----> Installing dependencies with npm"
 run_npm "install --production"
 run_npm "rebuild"
 echo "Dependencies installed" | indent
+
+cd "$BUILD_DIR"
+if [ -x deploy.sh ]; then
+    echo "-----> Running user deploy hook"
+    ./deploy.sh
+fi
